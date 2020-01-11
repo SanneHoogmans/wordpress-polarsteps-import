@@ -6,12 +6,9 @@
  * Author: Sanne Hoogmans & Julian van den Berkmortel
  **/
 
-add_action('admin_menu', 'polarsteps_menu');
 
-function polarsteps_menu()
-{
-    new Menu([
-        new ImportSubmenu()
-    ]);
-}
+// defile plugin dir
+define( 'POLARSTEPS_IMPORT__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
+// require menu class
+require_once( POLARSTEPS_IMPORT__PLUGIN_DIR . 'classes/class.menu.php');
