@@ -1,29 +1,27 @@
 <?php
 
-add_action( 'init', array( 'Menu', 'init' ) );
-
 /**
  * Class Menu
  */
 class Menu
 {
-    private static $initiated = false;
-
-    public static function init() {
-        if ( ! self::$initiated ) {
-            self::create_menu_item();
-        }
+    /**
+     * Registers all hooks to WordPress.
+     *
+     * @return void
+     */
+    public function register_hooks() {
+        add_action( 'admin_menu', array( $this, 'create_menu_item' ), 5 );
     }
 
     /**
      * Create Menu Item
      */
-    public static function create_menu_item() {
-        add_menu_page( 'Test Plugin Page', 'Test Plugin', 'manage_options', 'test-plugin', 'test_init' );
+    public function create_menu_item() {
+        add_menu_page( 'Test Plugin Page', 'Test Plugin', 'manage_options', 'test-plugin', array($this, 'test_init') );
     }
 
-}
-
-function test_init(){
-    echo "<h1>Hello World!</h1>";
+    public function test_init(){
+        echo "<h1>Hello World!</h1>";
+    }
 }
