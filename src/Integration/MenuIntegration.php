@@ -2,6 +2,9 @@
 
 namespace SanneHoogmans\PolarstepsImport\Integration;
 
+use SanneHoogmans\PolarstepsImport\Import\PolarStepsImporter;
+use SanneHoogmans\PolarstepsImport\View\PolarStepsImporterView;
+
 class MenuIntegration extends AbstractIntegration
 {
     public function register_hooks()
@@ -22,7 +25,12 @@ class MenuIntegration extends AbstractIntegration
         );
     }
 
+    /**
+     * Init View
+     */
     public function view_init(){
-        echo "<h1>Hello World!</h1>";
+        $polarStepsImporter = new PolarStepsImporter();
+        $polarStepsImporterView = new PolarStepsImporterView($polarStepsImporter);
+        echo $polarStepsImporterView->getView();
     }
 }

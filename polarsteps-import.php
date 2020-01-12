@@ -8,9 +8,9 @@
 
 use SanneHoogmans\PolarstepsImport\Plugin;
 
-require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
-
 define( 'POLARSTEPS_IMPORT__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
+require_once(POLARSTEPS_IMPORT__PLUGIN_DIR . 'vendor/autoload.php');
 
 add_action( 'plugins_loaded', 'polarsteps_import_init', 14 );
 
